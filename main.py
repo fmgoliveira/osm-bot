@@ -1,0 +1,6 @@
+from src.main import main
+
+USERNAME = "YOUR USERNAME HERE"
+PASSWORD = "YOUR PASSWORD HERE"
+
+main(USERNAME, PASSWORD)
