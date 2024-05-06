@@ -1,5 +1,6 @@
 from time import sleep
 from src.methods import initialize, openAd
+from src.colors import bcolors
 
 def main(username, password):
   while True:
@@ -7,7 +8,7 @@ def main(username, password):
     tryAgainIn = openAd(driver)
     
     if (tryAgainIn != -1):
-      print(f"Trying again in {tryAgainIn} minute(s)")
+      print(bcolors.FAIL + "Ad not available. Trying again in " + str(tryAgainIn) + " minute(s).\n(DON'T CLOSE THIS WINDOW)" + bcolors.ENDC)
       driver.quit()
       sleep(tryAgainIn * 60)
       continue
