@@ -18,13 +18,18 @@ def consentToAds(driver):
     consentButton.click()
 
 
-def initialize(username, password):
+def initialize(username, password, headless=False):
   print(bcolors.OKBLUE + "\n\nInitializing controlled browser window..." + bcolors.ENDC)
   
   chromedriver_autoinstaller.install()
   
   chrome_options = webdriver.ChromeOptions()
   chrome_options.add_argument("--mute-audio")
+  if headless:
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument('--remote-debugging-pipe')
 
   driver = webdriver.Chrome(options=chrome_options)
   driver.get("https://en.onlinesoccermanager.com/")
@@ -105,10 +110,10 @@ def openAd(driver):
             limitReached = driver.find_element(by=By.XPATH, value="//*[contains(text(), 'You have reached the maximum of videos you can watch here.')]")
             minutesStr = limitReached.text.split("Come back in ")[1].split(" ")[0]
             
-            print(bcolors.OKGREEN + "Ad watched." + bcolors.ENDC)
-            
             if (minutesStr == "a"):
               tryAgainIn = 1
+            elif (minutesStr == "an"):
+              tryAgainIn = 60
             else:
               tryAgainIn = int(minutesStr) + 1
 

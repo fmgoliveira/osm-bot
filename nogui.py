@@ -30,4 +30,4 @@ os.system('cls' if os.name == 'nt' else 'clear')
 print(bcolors.OKBLUE + "Starting bot...\n\n" + bcolors.ENDC)
 
 with Display(visible=0, size=(800, 600)):
-  main(username, password)
+  main(username, password, True)

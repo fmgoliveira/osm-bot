@@ -2,9 +2,9 @@ from time import sleep
 from src.methods import initialize, openAd
 from src.colors import bcolors
 
-def main(username, password):
+def main(username, password, headless=False):
   while True:
-    driver = initialize(username, password)
+    driver = initialize(username, password, headless)
     tryAgainIn = openAd(driver)
     
     if (tryAgainIn != -1):
