@@ -95,6 +95,12 @@ def openAd(driver):
     try:
       freeProducts = driver.find_elements(by=By.CLASS_NAME, value="product-free")
       freeProducts[1].click()
+
+      try: 
+        adsReward = driver.find_element(by=By.CLASS_NAME, value="product-ads-reward")
+        adsReward.click()
+      except:
+        None
       
       openAdButton = freeProducts[0]
       openAdButton.click()
