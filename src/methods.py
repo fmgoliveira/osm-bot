@@ -98,7 +98,8 @@ def openAd(driver):
 
       try: 
         adsReward = driver.find_element(by=By.CLASS_NAME, value="product-ads-reward")
-        adsReward.click()
+        if adsReward.get_attribute("class").includes("daily-reward-product-animation"):
+          adsReward.click()
       except:
         None
       
